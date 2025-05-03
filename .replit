@@ -1,3 +1,13 @@
-run = "python nsfw_bot.py"
+# run = "python nsfw_bot.py"
+# [nix]
+# channel = "stable-23_11"
+
+run = "pip install -r requirements.txt && gunicorn --bind 0.0.0.0:8080 app:server & python3.10 main.py"
+
+[interpreter]
+language = "python3"
+version = "3.10.12"
+
 [nix]
-channel = "stable-23_11"
+channel = "stable-23_11"  # Older channel that supports Python 3.10
+packages = ["libGL", "libGLU", "glib"]
